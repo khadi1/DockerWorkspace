@@ -1,0 +1,11 @@
+FROM mysql:5.7
+
+
+ENV MYSQL_ROOT_PASSWORD=rootpass
+ENV MYSQL_DATABASE=blogdb
+ENV MYSQL_USER=bloguser
+ENV MYSQL_PASSWORD=blogpass
+
+
+COPY init.sql /docker-entrypoint-initdb.d/
+COPY articles.sql /docker-entrypoint-initdb.d/

@@ -1,0 +1,19 @@
+version: '3'
+
+
+services:
+  web:
+    build: ./angular-blog
+    ports:
+      -"80:80"
+    depends_on:
+      - db
+
+
+  db:
+    build: ./db
+    environment:
+       MYSQL_ROOT_PASSWORD: rootpass
+       MYSQL_DATABASE: blogdb
+       MYSQL_USER: bloguser
+       MYSQL_PASSWORD: blogpass 
