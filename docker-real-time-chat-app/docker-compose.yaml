@@ -1,22 +1,19 @@
 version: '3'
 
-
-
 services:
+
+
   db:
-    build: ./db
-    
+    image: postgres
     environment:
-       POSTGRES_USER: chatuser
-       POSTGRES_PASSWORD: chatpass
-       POSTGRES_DB: chatdb
+      - POSTGRES_USER= chatuser
+      - POSTGRES_PASSWORD= chatpass
+      - POSTGRES_DB= chatdb
 
     volumes:
-      - ./db:/docker-entrypoint-initdb.d 
+      - "./db:docker-entrypoint-initdb.d"
 
-
-
-
+  
 
   pgadmin:
     image: dpage/pgadmin4
@@ -28,5 +25,9 @@ services:
       PGADMIN_DEFAULT_SERVER_DB: chatdb  
       PGADMIN_DEFAULT_SERVER_USERNAME: chatuser 
       PGADMIN_DEFAULT_SERVER_PASSWORD: chatpass  
+
+
     ports:
-      - "8082:80"
+      - "8008:80"
+    depends_on:
+      - db
