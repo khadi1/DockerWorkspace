@@ -7,6 +7,6 @@ spec:
   selector:
     app: appp
   ports:
-  - port: 8080
-    targetPort: 80
-    nodePort: 30008
+  - port: 433
+    targetPort: 8080
+    nodePort: 30009
